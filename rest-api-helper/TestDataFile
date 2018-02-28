@@ -1,0 +1,8 @@
+{
+	"BrandName": "LENOVO",
+	"Features": {
+	"Feature": ["i7 8650K", "16GB RAM", "512 SSD", "IPS Display", "Screen 13.3","adding data from file"]
+	},
+	"Id": 400,
+	"LaptopName": "ThinkPad"
+}

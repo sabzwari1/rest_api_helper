@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 
 import org.apache.http.HttpStatus;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.restassured.http.ContentType;
@@ -13,32 +14,63 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.*;
 import static org.junit.Assert.assertEquals;
 
-public class TestGet {
-
+public class TestGet extends BaseClass {
+	@Ignore
 	@Test
 	public void testGet() throws URISyntaxException {
 		/***
-		 * Given accept the response in json format
-		 * When I perform the get request
+		 * Given accept the response in json format When I perform the get
+		 * request
 		 */
-		Response response = given()
-				.accept(ContentType.JSON)
-				.when()
+		Response response = given().accept(ContentType.JSON).when()
 				.get(new URI("http://localhost:8080/laptop-bag/webapi/api/all"));
 		System.out.println(response.asString());
 	}
-	
+
+	@Ignore
+	@Test
 	public void testStatusCode() throws URISyntaxException {
-		int code =given()
+		// int code =
+		given().accept(ContentType.JSON).when().get(new URI("http://localhost:8080/laptop-bag/webapi/api/all")).then()
+				.assertThat().statusCode(HttpStatus.SC_OK);
+		/*
+		 * //*in order to capture status code and body use .thenreturn() method
+		 * other wise use //in order to only validate response use then()
+		 * .thenReturn() .statusCode(); Assert.assertEquals(HttpStatus.SC_OK,
+		 * code);
+		 */
+	}
+
+	@Test
+	public void testGetWithId() throws URISyntaxException {
+		/***
+		 * Given accept the content in json format When I perform the get
+		 * request with id 203 Then assertthat status code should be 200 Ok
+		 */
+		given()
 		.accept(ContentType.JSON)
 		.when()
-		.get(new URI("http://localhost:8080/laptop-bag/webapi/api/all"))
-		.thenReturn()
-		.statusCode();
-		Assert.assertEquals(HttpStatus.SC_OK, code);
+		.get(new URI("/find/200"))				
+		.then().assertThat()
+		.statusCode(HttpStatus.SC_OK);
+
 	}
-	
-	
-	
+
+	@Test
+	public void testGetWithInvalidId() throws URISyntaxException {
+		/***
+		 * Given accept the content in json format When I perform the get
+		 * request with id 203 Then assertthat status code should be 404 not
+		 * found
+		 */
+
+		given()
+		.accept(ContentType.JSON)
+		.when()
+		.get(new URI("/find/203"))
+		.then().assertThat()
+		.statusCode(HttpStatus.SC_NOT_FOUND);
+
+	}
 
 }

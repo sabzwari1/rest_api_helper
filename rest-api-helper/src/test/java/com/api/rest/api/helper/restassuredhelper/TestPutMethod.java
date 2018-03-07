@@ -10,14 +10,11 @@ package com.api.rest.api.helper.restassuredhelper;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import org.apache.http.HttpStatus;
 import org.junit.Test;
 import org.junit.Assert;
-
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 

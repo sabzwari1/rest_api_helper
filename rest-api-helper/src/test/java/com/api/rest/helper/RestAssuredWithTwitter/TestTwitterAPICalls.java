@@ -9,20 +9,17 @@ package com.api.rest.helper.RestAssuredWithTwitter;
  */
 
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import org.apache.http.HttpStatus;
 import org.apache.http.client.utils.URIBuilder;
 import org.junit.Test;
 
 public class TestTwitterAPICalls {
-	private final String ConsumerKey = "";
-	private final String ConsumerSecret = "";
-	private final String TokenKey = "";
-	private final String TokenSecret = "";
+	private final String ConsumerKey = "ihxQ1LvO09M3QuM4jxQSRNUIx";
+	private final String ConsumerSecret = "uDoI3cYcyCgV6oEMDnZ4gPJpSE1W9Fj2CIRo7YmSIBi1e8ML02";
+	private final String TokenKey = "1126506205-Svmd242cCcPIp9pNP7slNUlB4rjjjR9dqUNXvWw";
+	private final String TokenSecret = "4Oe9bdGeCHYRchxU27U14ybGXPqXW41qlQVpALeSzVH05";
 
 	@Test
 	public void testPostStatusUpdate() throws URISyntaxException {

@@ -76,7 +76,7 @@ public class TestTwitterAPICalls {
 		String s = given().auth().oauth(ConsumerKey, ConsumerSecret, TokenKey, TokenSecret).when().post(uri)
 				.thenReturn().asString();
 		System.out.println(s);
-
+ 
 	}
 
 }
